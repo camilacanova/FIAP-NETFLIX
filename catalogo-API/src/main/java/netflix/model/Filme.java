@@ -3,6 +3,13 @@ package netflix.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Filme extends Entidade{
 	public String getNome() {
 		return Nome;
@@ -69,9 +76,19 @@ public class Filme extends Entidade{
 	public int AnoLancamento;
 	public Date DataDisponibilidadeInicial;
 	public Date DataDisponibilidadeFinal;
+	
+	@ManyToMany(targetEntity=Tag.class, fetch=FetchType.EAGER)
+    @JoinColumn(name="tag_id")
 	public List<Tag> Tags;
+	
+	@OneToMany(targetEntity=Genero.class, fetch=FetchType.EAGER)
+    @JoinColumn(name="genero_id")
 	public List<Genero> Generos;
+
+	@OneToMany(targetEntity=Categoria.class, fetch=FetchType.EAGER)
+    @JoinColumn(name="categoria_id")
 	public List<Categoria> Categorias;
+	
 	public String ClassificacaoIndicativa;
 	public int Relevancia;
 }

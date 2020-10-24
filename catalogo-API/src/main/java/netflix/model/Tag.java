@@ -1,5 +1,8 @@
 package netflix.model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Tag extends Entidade {
 	public String Nome;
 

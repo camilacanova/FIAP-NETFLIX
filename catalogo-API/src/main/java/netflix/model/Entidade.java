@@ -1,5 +1,9 @@
 package netflix.model;
 
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 public class Entidade {
 	public int getId() {
 		return Id;
@@ -13,6 +17,9 @@ public class Entidade {
 	public void setAtivo(boolean ativo) {
 		Ativo = ativo;
 	}
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int Id;
 	public boolean Ativo;
 }

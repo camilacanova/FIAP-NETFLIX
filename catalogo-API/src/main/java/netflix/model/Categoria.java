@@ -1,6 +1,9 @@
 package netflix.model;
 
-public class Categoria {
+import javax.persistence.Entity;
+
+@Entity
+public class Categoria extends Entidade {
 	public String getNome() {
 		return Nome;
 	}

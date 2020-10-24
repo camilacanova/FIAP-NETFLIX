@@ -1,5 +1,8 @@
 package netflix.model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Genero extends Entidade{
 	public String getNome() {
 		return Nome;
