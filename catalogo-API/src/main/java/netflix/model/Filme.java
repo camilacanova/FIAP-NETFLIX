@@ -5,12 +5,43 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
 public class Filme extends Entidade{
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	public int Id;
+	
+	public String Nome;
+	public String Descricao;
+	public int AnoLancamento;
+	public Date DataDisponibilidadeInicial;
+	public Date DataDisponibilidadeFinal;
+	
+	public int tag;
+	public int genero;
+	
+	/*@ManyToMany(targetEntity=Tag.class, fetch=FetchType.EAGER)
+    @JoinColumn(name="tag_id")
+	public List<Tag> Tags;
+	
+	@OneToMany(targetEntity=Genero.class, fetch=FetchType.EAGER)
+    @JoinColumn(name="genero_id")
+	public List<Genero> Generos;*/
+
+	@OneToMany(targetEntity=Categoria.class, fetch=FetchType.EAGER)
+    @JoinColumn(name="categoria_id")
+	public List<Categoria> Categorias;
+	
+	public String ClassificacaoIndicativa;
+	public int Relevancia;
+	
 	public String getNome() {
 		return Nome;
 	}
@@ -41,7 +72,7 @@ public class Filme extends Entidade{
 	public void setDataDisponibilidadeFinal(Date dataDisponibilidadeFinal) {
 		DataDisponibilidadeFinal = dataDisponibilidadeFinal;
 	}
-	public List<Tag> getTags() {
+	/*public List<Tag> getTags() {
 		return Tags;
 	}
 	public void setTags(List<Tag> tags) {
@@ -53,6 +84,7 @@ public class Filme extends Entidade{
 	public void setGeneros(List<Genero> generos) {
 		Generos = generos;
 	}
+	*/
 	public List<Categoria> getCategorias() {
 		return Categorias;
 	}
@@ -71,24 +103,5 @@ public class Filme extends Entidade{
 	public void setRelevancia(int relevancia) {
 		Relevancia = relevancia;
 	}
-	public String Nome;
-	public String Descricao;
-	public int AnoLancamento;
-	public Date DataDisponibilidadeInicial;
-	public Date DataDisponibilidadeFinal;
 	
-	@ManyToMany(targetEntity=Tag.class, fetch=FetchType.EAGER)
-    @JoinColumn(name="tag_id")
-	public List<Tag> Tags;
-	
-	@OneToMany(targetEntity=Genero.class, fetch=FetchType.EAGER)
-    @JoinColumn(name="genero_id")
-	public List<Genero> Generos;
-
-	@OneToMany(targetEntity=Categoria.class, fetch=FetchType.EAGER)
-    @JoinColumn(name="categoria_id")
-	public List<Categoria> Categorias;
-	
-	public String ClassificacaoIndicativa;
-	public int Relevancia;
 }

@@ -10,9 +10,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan(basePackages = {
             "netflix.model"
             })
-//@EnableJpaRepositories(basePackages = {
-//            "netflix.repository"
-//            })
+@EnableJpaRepositories(basePackages = {
+            "netflix.repository"
+            })
 
 public class CatalogoApiApplication {
 
