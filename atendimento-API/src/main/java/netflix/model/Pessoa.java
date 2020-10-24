@@ -1,7 +1,5 @@
 package netflix.model;
 
-import netflix.catalogoAPI.Entidade;
-
 public class Pessoa extends Entidade{
 	public String getNome() {
 		return Nome;

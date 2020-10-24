@@ -1,7 +1,5 @@
 package netflix.model;
 
-import netflix.catalogoAPI.Entidade;
-
 public class TipoOcorrencia extends Entidade{
 	public String getNome() {
 		return Nome;
