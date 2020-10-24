@@ -3,6 +3,7 @@ package netflix.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,32 +12,33 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
-public class Filme extends Entidade{
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	public int Id;
+public class Filme {	
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	public Long Id;
+	public boolean Ativo;
 	public String Nome;
 	public String Descricao;
 	public int AnoLancamento;
 	public Date DataDisponibilidadeInicial;
 	public Date DataDisponibilidadeFinal;
 	
-	public int tag;
-	public int genero;
+	/*public int tag;
+	public int genero;*/
 	
 	/*@ManyToMany(targetEntity=Tag.class, fetch=FetchType.EAGER)
     @JoinColumn(name="tag_id")
 	public List<Tag> Tags;
+	*/
 	
-	@OneToMany(targetEntity=Genero.class, fetch=FetchType.EAGER)
-    @JoinColumn(name="genero_id")
-	public List<Genero> Generos;*/
+	@OneToOne
+	public Genero Genero;
 
 	@OneToMany(targetEntity=Categoria.class, fetch=FetchType.EAGER)
-    @JoinColumn(name="categoria_id")
 	public List<Categoria> Categorias;
 	
 	public String ClassificacaoIndicativa;
@@ -44,6 +46,19 @@ public class Filme extends Entidade{
 	
 	public String getNome() {
 		return Nome;
+	}
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
+	}
+	public boolean isAtivo() {
+		return Ativo;
+	}
+	public void setAtivo(boolean ativo) {
+		Ativo = ativo;
 	}
 	public void setNome(String nome) {
 		Nome = nome;
@@ -78,13 +93,15 @@ public class Filme extends Entidade{
 	public void setTags(List<Tag> tags) {
 		Tags = tags;
 	}
-	public List<Genero> getGeneros() {
-		return Generos;
-	}
-	public void setGeneros(List<Genero> generos) {
-		Generos = generos;
-	}
 	*/
+	
+	public Genero getGeneros() {
+		return Genero;
+	}
+	public void setGeneros(Genero generos) {
+		Genero = generos;
+	}
+	
 	public List<Categoria> getCategorias() {
 		return Categorias;
 	}
