@@ -1,41 +1,53 @@
 package netflix.catalogoAPI.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Tag {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public Long Id;
-	public boolean Ativo;
+	public Long id;
+	public boolean ativo;
+	@ManyToMany(mappedBy = "tags")
+	private List<Filme> filmes;
+	public String nome;
+	
+	public List<Filme> getFilmes() {
+		return filmes;
+	}
+
+	public void setFilmes(List<Filme> filmes) {
+		this.filmes = filmes;
+	}
+
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Long id) {
-		Id = id;
+		id = id;
 	}
 
 	public boolean isAtivo() {
-		return Ativo;
+		return ativo;
 	}
 
 	public void setAtivo(boolean ativo) {
-		Ativo = ativo;
+		ativo = ativo;
 	}
 
-	public String Nome;
-	
-
 	public String getNome() {
-		return Nome;
+		return nome;
 	}
 
 	public void setNome(String nome) {
-		Nome = nome;
+		nome = nome;
 	} 
 }

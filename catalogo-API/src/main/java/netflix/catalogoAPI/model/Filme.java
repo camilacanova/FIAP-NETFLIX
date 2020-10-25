@@ -10,7 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -19,101 +21,123 @@ public class Filme {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long Id;
-	private boolean Ativo;
-	private String Nome;
-	private String Descricao;
-	private int AnoLancamento;
-	private Date DataDisponibilidadeInicial;
-	private Date DataDisponibilidadeFinal;
-	private String ClassificacaoIndicativa;
-	private int Relevancia;
-	@OneToOne
-	private Genero Genero;
+	private Long id;
+	private boolean ativo;
+	private String nome;
+	private String descricao;
+	private int anoLancamento;
+	private Date dataDisponibilidadeInicial;
+	private Date dataDisponibilidadeFinal;
+	private String classificacaoIndicativa;
+	private int relevancia;
 	
-	/*@ManyToMany(targetEntity=Tag.class, fetch=FetchType.EAGER)
-    @JoinColumn(name="tag_id")
-	public List<Tag> Tags;
-	*/	
+	@ManyToMany
+	@JoinTable(name="genero_filme", joinColumns=@JoinColumn(name="filme_id"), inverseJoinColumns = @JoinColumn(name="genero_id"))
+	private List<Genero> generos;
+	
+	@ManyToMany
+	@JoinTable(name="tag_filme", joinColumns=@JoinColumn(name="filme_id"), inverseJoinColumns = @JoinColumn(name="tag_id"))
+	private List<Tag> tags;	
 
-	@OneToMany(targetEntity=Categoria.class, fetch=FetchType.EAGER)
-	private List<Categoria> Categorias;
-		
-	public String getNome() {
-		return Nome;
-	}
+	@ManyToMany
+	@JoinTable(name="categoria_filme", joinColumns=@JoinColumn(name="filme_id"), inverseJoinColumns = @JoinColumn(name="categoria_id"))
+	private List<Categoria> categorias;
+
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
+
 	public boolean isAtivo() {
-		return Ativo;
+		return ativo;
 	}
+
 	public void setAtivo(boolean ativo) {
-		Ativo = ativo;
+		this.ativo = ativo;
 	}
+
+	public String getNome() {
+		return nome;
+	}
+
 	public void setNome(String nome) {
-		Nome = nome;
+		this.nome = nome;
 	}
+
 	public String getDescricao() {
-		return Descricao;
+		return descricao;
 	}
+
 	public void setDescricao(String descricao) {
-		Descricao = descricao;
+		this.descricao = descricao;
 	}
+
 	public int getAnoLancamento() {
-		return AnoLancamento;
+		return anoLancamento;
 	}
+
 	public void setAnoLancamento(int anoLancamento) {
-		AnoLancamento = anoLancamento;
+		this.anoLancamento = anoLancamento;
 	}
+
 	public Date getDataDisponibilidadeInicial() {
-		return DataDisponibilidadeInicial;
+		return dataDisponibilidadeInicial;
 	}
+
 	public void setDataDisponibilidadeInicial(Date dataDisponibilidadeInicial) {
-		DataDisponibilidadeInicial = dataDisponibilidadeInicial;
+		this.dataDisponibilidadeInicial = dataDisponibilidadeInicial;
 	}
+
 	public Date getDataDisponibilidadeFinal() {
-		return DataDisponibilidadeFinal;
+		return dataDisponibilidadeFinal;
 	}
+
 	public void setDataDisponibilidadeFinal(Date dataDisponibilidadeFinal) {
-		DataDisponibilidadeFinal = dataDisponibilidadeFinal;
+		this.dataDisponibilidadeFinal = dataDisponibilidadeFinal;
 	}
-	/*public List<Tag> getTags() {
-		return Tags;
-	}
-	public void setTags(List<Tag> tags) {
-		Tags = tags;
-	}
-	*/
-	
-	public Genero getGenero() {
-		return Genero;
-	}
-	public void setGenero(Genero generos) {
-		Genero = generos;
-	}
-	
-	public List<Categoria> getCategorias() {
-		return Categorias;
-	}
-	public void setCategorias(List<Categoria> categorias) {
-		Categorias = categorias;
-	}
+
 	public String getClassificacaoIndicativa() {
-		return ClassificacaoIndicativa;
+		return classificacaoIndicativa;
 	}
+
 	public void setClassificacaoIndicativa(String classificacaoIndicativa) {
-		ClassificacaoIndicativa = classificacaoIndicativa;
+		this.classificacaoIndicativa = classificacaoIndicativa;
 	}
+
 	public int getRelevancia() {
-		return Relevancia;
+		return relevancia;
 	}
+
 	public void setRelevancia(int relevancia) {
-		Relevancia = relevancia;
+		this.relevancia = relevancia;
 	}
+
+	public List<Genero> getGenero() {
+		return generos;
+	}
+
+	public void setGenero(List<Genero> genero) {
+		this.generos = genero;
+	}
+
+	public List<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
+	}
+
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
+	}
+	
 	
 }
