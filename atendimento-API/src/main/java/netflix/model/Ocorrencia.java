@@ -13,19 +13,18 @@ public class Ocorrencia{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int Id;
+	private int id;
 	
-	private boolean Ativo;
-	
+	private boolean ativo;
+	private String descricao;
+	private String status;
+
 	@OneToOne
 	private Usuario usuario;
 	
 	@OneToOne
 	private TipoOcorrencia tipoOcorrencia;
-	
-	private String descricao;
-	private String status;
-	
+
 	@OneToOne
 	private Tratador usuarioTratador;
 	
@@ -59,18 +58,18 @@ public class Ocorrencia{
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
 	public int getId() {
-		return Id;
+		return id;
 	}
 	public void setId(int id) {
-		Id = id;
+		this.id = id;
 	}
 	public boolean isAtivo() {
-		return Ativo;
+		return ativo;
 	}
 	public void setAtivo(boolean ativo) {
-		Ativo = ativo;
+		this.ativo = ativo;
 	}
+	
 
 }

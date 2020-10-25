@@ -10,11 +10,29 @@ public class Usuario{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int Id;
-	private boolean Ativo;
-	private String Nome;
+	private int id;
+	private boolean ativo;
+	private String nome;
 	private String email;
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public boolean isAtivo() {
+		return ativo;
+	}
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 	public String getEmail() {
 		return email;
 	}
@@ -22,24 +40,4 @@ public class Usuario{
 		this.email = email;
 	}
 	
-	public int getId() {
-		return Id;
-	}
-	public void setId(int id) {
-		Id = id;
-	}
-	public boolean isAtivo() {
-		return Ativo;
-	}
-	public void setAtivo(boolean ativo) {
-		Ativo = ativo;
-	}
-	
-	public String getNome() {
-		return Nome;
-	}
-
-	public void setNome(String nome) {
-		Nome = nome;
-	}
 }

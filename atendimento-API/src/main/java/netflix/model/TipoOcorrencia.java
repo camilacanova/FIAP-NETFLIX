@@ -10,28 +10,28 @@ public class TipoOcorrencia{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int Id;
-	private boolean Ativo;
-	private String Nome;
+	private int id;
+	private boolean ativo;
+	private String nome;
 	
 	public int getId() {
-		return Id;
+		return id;
 	}
 	public void setId(int id) {
-		Id = id;
+		this.id = id;
 	}
 	public boolean isAtivo() {
-		return Ativo;
+		return ativo;
 	}
 	public void setAtivo(boolean ativo) {
-		Ativo = ativo;
+		this.ativo = ativo;
 	}
 	public String getNome() {
-		return Nome;
+		return nome;
 	}
-
 	public void setNome(String nome) {
-		Nome = nome;
+		this.nome = nome;
 	}
+	
 
 }

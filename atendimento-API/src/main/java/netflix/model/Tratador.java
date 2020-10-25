@@ -10,37 +10,35 @@ public class Tratador{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int Id;
-	private boolean Ativo;
-	private String Nivel;
-	private String Nome;
+	private int id;
+	private boolean ativo;
+	private String nivel;
+	private String nome;
 	private String email;
 	
 	public int getId() {
-		return Id;
+		return id;
 	}
 	public void setId(int id) {
-		Id = id;
+		this.id = id;
 	}
 	public boolean isAtivo() {
-		return Ativo;
+		return ativo;
 	}
 	public void setAtivo(boolean ativo) {
-		Ativo = ativo;
-	}
-	
-	public String getNome() {
-		return Nome;
-	}
-
-	public void setNome(String nome) {
-		Nome = nome;
+		this.ativo = ativo;
 	}
 	public String getNivel() {
-		return Nivel;
+		return nivel;
 	}
 	public void setNivel(String nivel) {
-		Nivel = nivel;
+		this.nivel = nivel;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	public String getEmail() {
 		return email;
@@ -48,5 +46,5 @@ public class Tratador{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+		
 }
