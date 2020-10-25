@@ -10,10 +10,10 @@ public class Usuario{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public int Id;
-	public boolean Ativo;
-	public String Nome;
-	public String email;
+	private int Id;
+	private boolean Ativo;
+	private String Nome;
+	private String email;
 	
 	public String getEmail() {
 		return email;

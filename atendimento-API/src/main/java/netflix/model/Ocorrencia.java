@@ -13,21 +13,21 @@ public class Ocorrencia{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public int Id;
+	private int Id;
 	
-	public boolean Ativo;
-	
-	@OneToOne
-	public Usuario usuario;
+	private boolean Ativo;
 	
 	@OneToOne
-	public TipoOcorrencia tipoOcorrencia;
-	
-	public String descricao;
-	public String status;
+	private Usuario usuario;
 	
 	@OneToOne
-	public Tratador usuarioTratador;
+	private TipoOcorrencia tipoOcorrencia;
+	
+	private String descricao;
+	private String status;
+	
+	@OneToOne
+	private Tratador usuarioTratador;
 	
 	public Tratador getUsuarioTratador() {
 		return usuarioTratador;

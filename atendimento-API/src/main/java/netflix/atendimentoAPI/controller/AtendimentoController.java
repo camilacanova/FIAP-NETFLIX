@@ -12,21 +12,21 @@ import netflix.atendimentoAPI.service.AtendimentoService;
 import netflix.model.*;
 
 @RestController
-@RequestMapping(value = "/v1/orderservice")
+@RequestMapping(value = "/v1/ocorrencia")
 public class AtendimentoController {
 
 	@Autowired
 	private AtendimentoService atendimentoService;
 	
-	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String createOrder(@RequestBody Ocorrencia ocorrencia) {
+	@RequestMapping(value = "/cadastrar", method = RequestMethod.POST)
+	public String cadastrarOcorrencia(@RequestBody Ocorrencia ocorrencia) {
 		Ocorrencia createOcorrencia = null;
 		createOcorrencia = atendimentoService.createOcorrencia(ocorrencia);
 		return "Ocorrência Id = " + createOcorrencia.getId();
 	}
 	
-	@RequestMapping(value = "/product/{productId}", method = RequestMethod.GET)
-	public ResponseEntity<?> getProduct(@PathVariable(name = "idOcorrencia") int idOcorrencia) {
+	@RequestMapping(value = "/ocorrencia/{productId}", method = RequestMethod.GET)
+	public ResponseEntity<?> consultarOcorrencia(@PathVariable(name = "idOcorrencia") int idOcorrencia) {
 		Ocorrencia ocorrencia = null;
 		ocorrencia = atendimentoService.getOcorrencia(idOcorrencia);
 		return ResponseEntity.ok(ocorrencia);

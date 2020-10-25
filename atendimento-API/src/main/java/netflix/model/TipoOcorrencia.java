@@ -10,9 +10,9 @@ public class TipoOcorrencia{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public int Id;
-	public boolean Ativo;
-	public String Nome;
+	private int Id;
+	private boolean Ativo;
+	private String Nome;
 	
 	public int getId() {
 		return Id;

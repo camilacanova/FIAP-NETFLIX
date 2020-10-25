@@ -1,4 +1,4 @@
-package netflix.model;
+package netflix.catalogoAPI.model;
 
 import java.util.Date;
 import java.util.List;
@@ -19,31 +19,26 @@ public class Filme {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public Long Id;
-	public boolean Ativo;
-	public String Nome;
-	public String Descricao;
-	public int AnoLancamento;
-	public Date DataDisponibilidadeInicial;
-	public Date DataDisponibilidadeFinal;
-	
-	/*public int tag;
-	public int genero;*/
+	private Long Id;
+	private boolean Ativo;
+	private String Nome;
+	private String Descricao;
+	private int AnoLancamento;
+	private Date DataDisponibilidadeInicial;
+	private Date DataDisponibilidadeFinal;
+	private String ClassificacaoIndicativa;
+	private int Relevancia;
+	@OneToOne
+	private Genero Genero;
 	
 	/*@ManyToMany(targetEntity=Tag.class, fetch=FetchType.EAGER)
     @JoinColumn(name="tag_id")
 	public List<Tag> Tags;
-	*/
-	
-	@OneToOne
-	public Genero Genero;
+	*/	
 
 	@OneToMany(targetEntity=Categoria.class, fetch=FetchType.EAGER)
-	public List<Categoria> Categorias;
-	
-	public String ClassificacaoIndicativa;
-	public int Relevancia;
-	
+	private List<Categoria> Categorias;
+		
 	public String getNome() {
 		return Nome;
 	}
@@ -95,10 +90,10 @@ public class Filme {
 	}
 	*/
 	
-	public Genero getGeneros() {
+	public Genero getGenero() {
 		return Genero;
 	}
-	public void setGeneros(Genero generos) {
+	public void setGenero(Genero generos) {
 		Genero = generos;
 	}
 	

@@ -10,11 +10,11 @@ public class Tratador{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public int Id;
-	public boolean Ativo;
-	public String Nivel;
-	public String Nome;
-	public String email;
+	private int Id;
+	private boolean Ativo;
+	private String Nivel;
+	private String Nome;
+	private String email;
 	
 	public int getId() {
 		return Id;

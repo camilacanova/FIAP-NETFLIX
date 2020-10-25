@@ -1,18 +1,28 @@
-package netflix.model;
+package netflix.catalogoAPI.model;
 
-import javax.persistence.OneToOne;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Genero {
-
+public class Categoria {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public Long Id;
-	public boolean Ativo;
+	private Long Id;
+	
+	private boolean Ativo;
+	
+	private String Nome; 
+	
+	public String getNome() {
+		return Nome;
+	}
+
+	public void setNome(String nome) {
+		Nome = nome;
+	}
 	
 	public Long getId() {
 		return Id;
@@ -22,10 +32,6 @@ public class Genero {
 		Id = id;
 	}
 
-	public String getNome() {
-		return Nome;
-	}
-
 	public boolean isAtivo() {
 		return Ativo;
 	}
@@ -33,10 +39,5 @@ public class Genero {
 	public void setAtivo(boolean ativo) {
 		Ativo = ativo;
 	}
-
-	public void setNome(String nome) {
-		Nome = nome;
-	}
-
-	public String Nome;
+	
 }

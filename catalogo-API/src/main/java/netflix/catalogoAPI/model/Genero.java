@@ -1,4 +1,4 @@
-package netflix.model;
+package netflix.catalogoAPI.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,18 +6,24 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Tag {
-	
+public class Genero {
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public Long Id;
-	public boolean Ativo;
+	private Long Id;
+	private boolean Ativo;
+	private String Nome;
+	
 	public Long getId() {
 		return Id;
 	}
 
 	public void setId(Long id) {
 		Id = id;
+	}
+
+	public String getNome() {
+		return Nome;
 	}
 
 	public boolean isAtivo() {
@@ -28,14 +34,9 @@ public class Tag {
 		Ativo = ativo;
 	}
 
-	public String Nome;
-	
-
-	public String getNome() {
-		return Nome;
-	}
-
 	public void setNome(String nome) {
 		Nome = nome;
-	} 
+	}
+
+	
 }
