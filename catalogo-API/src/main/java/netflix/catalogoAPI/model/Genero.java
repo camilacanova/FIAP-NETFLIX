@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Genero {
 
@@ -40,6 +42,8 @@ public class Genero {
 	public void setFilmes(List<Filme> filmes) {
 		this.filmes = filmes;
 	}
+	
+	@JsonBackReference
 	@ManyToMany(mappedBy = "generos")
 	private List<Filme> filmes;
 		

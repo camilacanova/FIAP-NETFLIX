@@ -16,6 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Filme {	
 	
@@ -30,15 +32,19 @@ public class Filme {
 	private Date dataDisponibilidadeFinal;
 	private String classificacaoIndicativa;
 	private int relevancia;
+	private int visualizacoes;
 	
+	@JsonManagedReference
 	@ManyToMany
 	@JoinTable(name="genero_filme", joinColumns=@JoinColumn(name="filme_id"), inverseJoinColumns = @JoinColumn(name="genero_id"))
 	private List<Genero> generos;
 	
+	@JsonManagedReference
 	@ManyToMany
 	@JoinTable(name="tag_filme", joinColumns=@JoinColumn(name="filme_id"), inverseJoinColumns = @JoinColumn(name="tag_id"))
 	private List<Tag> tags;	
 
+	@JsonManagedReference
 	@ManyToMany
 	@JoinTable(name="categoria_filme", joinColumns=@JoinColumn(name="filme_id"), inverseJoinColumns = @JoinColumn(name="categoria_id"))
 	private List<Categoria> categorias;
@@ -115,12 +121,12 @@ public class Filme {
 		this.relevancia = relevancia;
 	}
 
-	public List<Genero> getGenero() {
+	public List<Genero> getGeneros() {
 		return generos;
 	}
 
-	public void setGenero(List<Genero> genero) {
-		this.generos = genero;
+	public void setGeneros(List<Genero> generos) {
+		this.generos = generos;
 	}
 
 	public List<Tag> getTags() {
@@ -137,6 +143,14 @@ public class Filme {
 
 	public void setCategorias(List<Categoria> categorias) {
 		this.categorias = categorias;
+	}
+
+	public int getVisualizacoes() {
+		return visualizacoes;
+	}
+
+	public void setVisualizacoes(int visualizacoes) {
+		this.visualizacoes = visualizacoes;
 	}
 	
 	

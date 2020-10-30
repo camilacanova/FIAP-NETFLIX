@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Tag {
 	
@@ -19,6 +21,7 @@ public class Tag {
 	private List<Filme> filmes;
 	public String nome;
 	
+	@JsonBackReference
 	public List<Filme> getFilmes() {
 		return filmes;
 	}
