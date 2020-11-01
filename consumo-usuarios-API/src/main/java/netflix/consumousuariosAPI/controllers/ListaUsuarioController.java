@@ -11,28 +11,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import netflix.consumousuariosAPI.model.HistoricoUsuario;
-import netflix.consumousuariosAPI.model.HistoricoUsuario;
-import netflix.consumousuariosAPI.services.HistoricoUsuarioService;
+import netflix.consumousuariosAPI.model.ListaUsuario;
+import netflix.consumousuariosAPI.model.ListaUsuario;
+import netflix.consumousuariosAPI.services.ListaUsuarioService;
 
 @RestController
-@RequestMapping(value = "v1/historico")
-public class HistoricoUsuarioController {
+@RequestMapping(value = "v1/lista")
+public class ListaUsuarioController {
 
 	@Autowired
-	private HistoricoUsuarioService historicoService;
+	private ListaUsuarioService listaService;
 	
 	@RequestMapping(value = "/cadastro", method = RequestMethod.POST)
-	public String cadastroHistoricos(@RequestBody HistoricoUsuario historico) {
-		HistoricoUsuario historicoCriado = historicoService.cadastrarHistorico(historico);
-		if(historicoCriado != null)
-			return "Historico " + historicoCriado.getId() + " cadastrado";
+	public String cadastroListas(@RequestBody ListaUsuario lista) {
+		ListaUsuario listaCriado = listaService.cadastrarLista(lista);
+		if(listaCriado != null)
+			return "Lista " + listaCriado.getId() + " cadastrado";
 		return "Erro ao cadastrar";
 	}
 	
 	@RequestMapping(value = "/{id_usuario}", method = RequestMethod.GET)
-	public ResponseEntity<List<HistoricoUsuario>> ListarHistoricos(@PathVariable("id_usuario") long idUsuario){
-		List<HistoricoUsuario> lista = historicoService.consultarHistorico(idUsuario);
+	public ResponseEntity<List<ListaUsuario>> ListarListas(@PathVariable("id_usuario") long idUsuario){
+		List<ListaUsuario> lista = listaService.consultarLista(idUsuario);
 		return new ResponseEntity(lista, HttpStatus.OK); 
 	}
 }

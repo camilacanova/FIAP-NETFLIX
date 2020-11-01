@@ -4,24 +4,36 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import netflix.consumousuariosAPI.model.Filme;
+import netflix.consumousuariosAPI.model.HistoricoUsuario;
 import netflix.consumousuariosAPI.repository.HistoricoUsuarioRepository;
 
 @Service
 public class HistoricoUsuarioService {
 
-//	public List<Filme> consultarLista(int idUsuario) {
-//		Optional<List<Filme>> optionalList = HistoricoUsuarioRepository.findFilmeByGenerosNome(i);
-//		
-//		List<Filme> filmes = new ArrayList<>();		
-//		if (optionalList.isPresent()) {
-//			for (Filme filme : optionalList.get()) {				
-//				filmes.add(filme);
-//			}
-//		}
-//		
-//		return filmes;
-//	}
+	@Autowired
+	private HistoricoUsuarioRepository historicoRepository;
+	
+	public List<HistoricoUsuario> consultarHistorico(Long usuarioId){
+		Optional<List<HistoricoUsuario>> optionalList = historicoRepository.findByUsuarioId(usuarioId);
+		
+		List<HistoricoUsuario> historicos = new ArrayList<>();		
+		if (optionalList.isPresent()) {
+			for (HistoricoUsuario historico : optionalList.get()) {				
+				historicos.add(historico);
+			}
+		}
+		
+		return historicos;
+	}
+	
+	public HistoricoUsuario cadastrarHistorico(HistoricoUsuario HistoricoUsuario) {
+		HistoricoUsuario historicoCriado = null;
+		if(HistoricoUsuario.getUsuario().getId() != null && 
+			HistoricoUsuario.getFilme().getId() != null)
+			historicoCriado = historicoRepository.save(HistoricoUsuario);
+		return historicoCriado;
+	}
 }
