@@ -1,24 +1,15 @@
-package netflix.model;
+package netflix.atendimentoAPI.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
 public class Usuario{
-
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	private boolean ativo;
 	private String nome;
 	private String email;
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public boolean isAtivo() {
@@ -40,4 +31,9 @@ public class Usuario{
 		this.email = email;
 	}
 	
+	public Usuario() {}
+	public Usuario(Long id) {
+		this.id = id;
+	}
+		
 }

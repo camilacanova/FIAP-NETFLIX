@@ -32,7 +32,7 @@ public class FilmesController {
 	
 	//Consulta detalhe de um filme	
 	@RequestMapping(value = "/{id_filme}", method = RequestMethod.GET)
-	public Optional<Filme> consultaFilme(@PathVariable("id_filme") int idFilme) {
+	public Filme consultaFilme(@PathVariable("id_filme") Long idFilme) {
 		return filmeService.consultarFilme(idFilme);
 	}
 	
@@ -55,4 +55,5 @@ public class FilmesController {
 		List<Filme> filmes = new ArrayList<Filme>();
 		return filmes;
 	}
+	
 }

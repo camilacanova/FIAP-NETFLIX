@@ -1,7 +1,8 @@
-package netflix.repository;
+package netflix.atendimentoAPI.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import netflix.model.Ocorrencia;
+
+import netflix.atendimentoAPI.model.Ocorrencia;
 
 public interface OcorrenciaRepository extends JpaRepository<Ocorrencia, Integer> {
 	

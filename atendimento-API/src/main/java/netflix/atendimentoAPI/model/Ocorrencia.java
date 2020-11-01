@@ -1,10 +1,13 @@
-package netflix.model;
+package netflix.atendimentoAPI.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
 public class Ocorrencia{
@@ -12,12 +15,13 @@ public class Ocorrencia{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	
+	private Long idUsuario;
 	private boolean ativo;
 	private String descricao;
 	private String status;
 
-	@OneToOne
+	@JsonInclude()
+	@Transient
 	private Usuario usuario;
 	
 	@OneToOne
@@ -67,6 +71,12 @@ public class Ocorrencia{
 	}
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
+	}
+	public Long getIdUsuario() {
+		return idUsuario;
+	}
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 	
 

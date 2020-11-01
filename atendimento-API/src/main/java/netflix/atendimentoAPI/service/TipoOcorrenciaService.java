@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import netflix.model.TipoOcorrencia;
-import netflix.repository.TipoOcorrenciaRepository;
+import netflix.atendimentoAPI.model.TipoOcorrencia;
+import netflix.atendimentoAPI.repository.TipoOcorrenciaRepository;
 
 @Service
 public class TipoOcorrenciaService {

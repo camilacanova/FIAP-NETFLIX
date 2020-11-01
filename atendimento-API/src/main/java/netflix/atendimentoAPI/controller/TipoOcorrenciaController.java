@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import netflix.atendimentoAPI.model.*;
 import netflix.atendimentoAPI.service.TipoOcorrenciaService;
-import netflix.model.*;
 
 @RestController
 @RequestMapping(value = "/v1/tipo_ocorrencia")

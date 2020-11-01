@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
@@ -16,6 +17,7 @@ public class ListaUsuario {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	private boolean ativo;
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;

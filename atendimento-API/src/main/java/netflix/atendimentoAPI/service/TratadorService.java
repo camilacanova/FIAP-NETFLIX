@@ -4,8 +4,9 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import netflix.model.Tratador;
-import netflix.repository.TratadorRepository;
+
+import netflix.atendimentoAPI.model.Tratador;
+import netflix.atendimentoAPI.repository.TratadorRepository;
 
 @Service
 public class TratadorService {

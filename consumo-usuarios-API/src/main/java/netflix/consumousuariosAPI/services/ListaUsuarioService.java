@@ -7,11 +7,13 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import netflix.consumousuariosAPI.cache.CacheManagement;
+import netflix.consumousuariosAPI.model.Filme;
 import netflix.consumousuariosAPI.model.ListaUsuario;
 import netflix.consumousuariosAPI.repository.ListaUsuarioRepository;
 
 @Service
-public class ListaUsuarioService {
+public class ListaUsuarioService extends ConsumerService {
 	@Autowired
 	private ListaUsuarioRepository listaRepository;
 	
@@ -20,7 +22,13 @@ public class ListaUsuarioService {
 		
 		List<ListaUsuario> listas = new ArrayList<>();		
 		if (optionalList.isPresent()) {
-			for (ListaUsuario lista : optionalList.get()) {				
+			for (ListaUsuario lista : optionalList.get()) {
+				Filme filme = CacheManagement.get(lista.getIdFilme());
+				if(filme == null) {
+					filme = new Filme(lista.getIdFilme());
+					filme = getFilmeFromService(filme);
+				}
+				lista.setFilme(filme);
 				listas.add(lista);
 			}
 		}

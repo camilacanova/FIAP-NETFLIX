@@ -4,17 +4,32 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import netflix.model.Ocorrencia;
-import netflix.repository.OcorrenciaRepository;
+
+import netflix.atendimentoAPI.cache.CacheManagement;
+import netflix.atendimentoAPI.model.Ocorrencia;
+import netflix.atendimentoAPI.model.Usuario;
+import netflix.atendimentoAPI.repository.OcorrenciaRepository;
 
 @Service
-public class OcorrenciaService {
+public class OcorrenciaService extends ConsumerService {
 	
 	@Autowired
 	OcorrenciaRepository atendimentoRepository;
 	
-	public Optional<Ocorrencia> getOcorrencia(int idOcorrencia){
-		return atendimentoRepository.findById(idOcorrencia);
+	public Ocorrencia getOcorrencia(int idOcorrencia){
+		Optional<Ocorrencia> ocorrenciaOpt = atendimentoRepository.findById(idOcorrencia);
+		Ocorrencia ocorrencia = null;
+		if(ocorrenciaOpt.isPresent()) {
+			ocorrencia = ocorrenciaOpt.get();
+			Usuario usuario = CacheManagement.get(ocorrencia.getIdUsuario());
+			if(usuario == null) {
+				usuario = new Usuario(ocorrencia.getIdUsuario());
+				usuario = getUsuarioFromService(usuario);
+			}
+			ocorrencia.setUsuario(usuario);
+		}
+		
+		return ocorrencia;
 	}
 
 	public Ocorrencia createOcorrencia(Ocorrencia ocorrencia) {

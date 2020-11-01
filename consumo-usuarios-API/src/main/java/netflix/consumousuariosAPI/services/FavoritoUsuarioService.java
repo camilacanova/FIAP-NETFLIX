@@ -7,11 +7,13 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import netflix.consumousuariosAPI.cache.CacheManagement;
 import netflix.consumousuariosAPI.model.FavoritoUsuario;
+import netflix.consumousuariosAPI.model.Filme;
 import netflix.consumousuariosAPI.repository.FavoritoUsuarioRepository;
 
 @Service
-public class FavoritoUsuarioService {
+public class FavoritoUsuarioService extends ConsumerService {
 	
 	@Autowired
 	private FavoritoUsuarioRepository favoritoRepository;
@@ -21,8 +23,14 @@ public class FavoritoUsuarioService {
 		
 		List<FavoritoUsuario> favoritos = new ArrayList<>();		
 		if (optionalList.isPresent()) {
-			for (FavoritoUsuario favorito : optionalList.get()) {				
-				favoritos.add(favorito);
+			for (FavoritoUsuario fav : optionalList.get()) {
+				Filme filme = CacheManagement.get(fav.getIdFilme());
+				if(filme == null) {
+					filme = new Filme(fav.getIdFilme());
+					filme = getFilmeFromService(filme);
+				}
+				fav.setFilme(filme);
+				favoritos.add(fav);
 			}
 		}
 		

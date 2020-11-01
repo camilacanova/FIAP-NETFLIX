@@ -3,7 +3,7 @@ package netflix.consumousuariosAPI.model;
 import java.util.Date;
 import java.util.List;
 
-public class Filme {	
+public class Filme {
 	private Long id;
 	private boolean ativo;
 	private String nome;
@@ -122,4 +122,10 @@ public class Filme {
 		this.visualizacoes = visualizacoes;
 	}
 	
+	public Filme(Long id) {
+		this.id = id;
+	}
+	
+	public Filme() {}
+		
 }

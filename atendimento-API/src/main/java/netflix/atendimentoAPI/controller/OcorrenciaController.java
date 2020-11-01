@@ -1,7 +1,5 @@
 package netflix.atendimentoAPI.controller;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import netflix.atendimentoAPI.model.*;
 import netflix.atendimentoAPI.service.OcorrenciaService;
-import netflix.model.*;
 
 @RestController
 @RequestMapping(value = "/v1/ocorrencia")
@@ -28,7 +26,7 @@ public class OcorrenciaController {
 	}
 	
 	@RequestMapping(value = "/consultar/{ocorrenciaId}", method = RequestMethod.GET)
-	public Optional<Ocorrencia> consultaOcorrencia(@PathVariable("id_ocorrencia") int idOcorrencia) {
+	public Ocorrencia consultaOcorrencia(@PathVariable("id_ocorrencia") int idOcorrencia) {
 		return ocorrenciaService.getOcorrencia(idOcorrencia); 
 	}
 }

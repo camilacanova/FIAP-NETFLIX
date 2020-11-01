@@ -1,7 +1,8 @@
-package netflix.repository;
+package netflix.atendimentoAPI.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import netflix.model.Tratador;
+
+import netflix.atendimentoAPI.model.Tratador;
 
 public interface TratadorRepository extends JpaRepository<Tratador, Integer> {
 

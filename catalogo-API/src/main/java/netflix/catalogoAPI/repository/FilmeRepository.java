@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import netflix.catalogoAPI.model.Filme;
 
-public interface FilmeRepository extends JpaRepository<Filme, Integer> {
+public interface FilmeRepository extends JpaRepository<Filme, Long> {
 	
 	//@Query(value = "select f from Filme f Join fetch f.generos gf where gf.idGenero = :genero_id ")
 	Optional<List<Filme>> findFilmeByGenerosId(Long genero_id);
