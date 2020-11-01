@@ -35,7 +35,7 @@ public class Tag {
 	}
 
 	public void setId(Long id) {
-		id = id;
+		this.id = id;
 	}
 
 	public boolean isAtivo() {
@@ -43,7 +43,7 @@ public class Tag {
 	}
 
 	public void setAtivo(boolean ativo) {
-		ativo = ativo;
+		this.ativo = ativo;
 	}
 
 	public String getNome() {
@@ -51,6 +51,6 @@ public class Tag {
 	}
 
 	public void setNome(String nome) {
-		nome = nome;
+		this.nome = nome;
 	} 
 }
