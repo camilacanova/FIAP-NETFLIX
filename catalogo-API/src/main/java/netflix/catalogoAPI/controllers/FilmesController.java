@@ -2,7 +2,6 @@ package netflix.catalogoAPI.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -56,4 +55,8 @@ public class FilmesController {
 		return filmes;
 	}
 	
+	@RequestMapping(value = "/assistir/{id_filme}/{id_usuario}", method = RequestMethod.GET)
+	public Filme consumirFilme(@PathVariable("id_filme") Long id_filme, @PathVariable("id_usuario") Long id_usuario) {
+		return filmeService.consumirFilme(id_filme, id_usuario);
+	}
 }

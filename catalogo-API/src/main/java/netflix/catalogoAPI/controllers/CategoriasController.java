@@ -29,6 +29,6 @@ public class CategoriasController {
 	@RequestMapping(value = "/consultar", method = RequestMethod.GET)
 	public ResponseEntity<List<Categoria>> ListarCategorias(){
 		List<Categoria> lista = CatalogoService.ConsultarCategoria();
-		return new ResponseEntity(lista, HttpStatus.OK); 
+		return new ResponseEntity<List<Categoria>>(lista, HttpStatus.OK); 
 	}
 }

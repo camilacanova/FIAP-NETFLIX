@@ -1,7 +1,6 @@
 package netflix.catalogoAPI.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,10 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import netflix.catalogoAPI.model.Categoria;
-import netflix.catalogoAPI.model.Filme;
 import netflix.catalogoAPI.model.Tag;
-import netflix.catalogoAPI.services.FilmeService;
 import netflix.catalogoAPI.services.TagService;
 
 @RestController
@@ -37,6 +33,6 @@ public class TagsController {
 	@RequestMapping(value = "/consultar", method = RequestMethod.GET)
 	public ResponseEntity<List<Tag>> consultaTag(@PathVariable("idTag") int idTag) {
 		List<Tag> lista = tagService.consultarTags();
-		return new ResponseEntity(lista, HttpStatus.OK); 
+		return new ResponseEntity<List<Tag>>(lista, HttpStatus.OK); 
 	}
 }

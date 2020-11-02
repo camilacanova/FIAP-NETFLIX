@@ -33,7 +33,7 @@ public class GenerosController {
 	@RequestMapping(value = "/consultar", method = RequestMethod.GET)
 	public ResponseEntity<List<Genero>> consultaGenero(@PathVariable("idGenero") int idGenero) {
 		List<Genero> lista = generoService.consultarGeneros();
-		return new ResponseEntity(lista, HttpStatus.OK); 
+		return new ResponseEntity<List<Genero>>(lista, HttpStatus.OK); 
 	}
 	
 }

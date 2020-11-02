@@ -35,4 +35,12 @@ public class HistoricoUsuarioController {
 		List<HistoricoUsuario> lista = historicoService.consultarHistorico(idUsuario);
 		return new ResponseEntity(lista, HttpStatus.OK); 
 	}
+	
+//	@RequestMapping(value = "/atualizar", method = RequestMethod.PUT)
+//	public String atualizarHistorico(@RequestBody HistoricoUsuario historico) {
+//		HistoricoUsuario historicoCriado = historicoService.Historico(historico);
+//		if(historicoCriado != null)
+//			return "Historico " + historicoCriado.getId() + " cadastrado";
+//		return "Erro ao cadastrar";
+//	}
 }
