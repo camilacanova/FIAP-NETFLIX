@@ -7,8 +7,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EntityScan(basePackages = {"netflix.model"})
-@EnableJpaRepositories(basePackages = {"netflix.repository"})
+@EntityScan(basePackages = {"netflix.atendimentoAPI.model"})
+@EnableJpaRepositories(basePackages = {"netflix.atendimentoAPI.repository"})
 @EnableDiscoveryClient
 public class AtendimentoApiApplication {
 

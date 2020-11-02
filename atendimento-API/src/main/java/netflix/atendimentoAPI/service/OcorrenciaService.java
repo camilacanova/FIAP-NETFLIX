@@ -14,10 +14,10 @@ import netflix.atendimentoAPI.repository.OcorrenciaRepository;
 public class OcorrenciaService extends ConsumerService {
 	
 	@Autowired
-	OcorrenciaRepository atendimentoRepository;
+	private OcorrenciaRepository ocorrenciaRepository;
 	
 	public Ocorrencia getOcorrencia(int idOcorrencia){
-		Optional<Ocorrencia> ocorrenciaOpt = atendimentoRepository.findById(idOcorrencia);
+		Optional<Ocorrencia> ocorrenciaOpt = ocorrenciaRepository.findById(idOcorrencia);
 		Ocorrencia ocorrencia = null;
 		if(ocorrenciaOpt.isPresent()) {
 			ocorrencia = ocorrenciaOpt.get();
@@ -35,7 +35,7 @@ public class OcorrenciaService extends ConsumerService {
 	public Ocorrencia createOcorrencia(Ocorrencia ocorrencia) {
 		Ocorrencia ocorrenciaCriada = null;
 		if(ocorrencia.getDescricao() != null && ocorrencia.getDescricao() != "")
-			ocorrenciaCriada = atendimentoRepository.save(ocorrencia);
+			ocorrenciaCriada = ocorrenciaRepository.save(ocorrencia);
 		return ocorrenciaCriada;
 	}	
 }
