@@ -16,8 +16,6 @@ public class UsuarioService {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-	
-	@Autowired
 	private UsuarioProducer usuarioProducer;
 	
 	public List<Usuario> consultarUsuarios(){
